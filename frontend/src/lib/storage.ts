@@ -45,11 +45,18 @@ export async function saveSettings(settings: Settings) {
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
 }
 
+export type Message = {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  createdAt: number;
+};
+
 export type Conversation = {
   id: string;
   title: string;
   createdAt: number;
-  messages: { id: string; role: 'user' | 'assistant'; content: string; createdAt: number }[];
+  messages: Message[];
 };
 
 const AI_DB_KEY = 'nexus-ai-conversations';
